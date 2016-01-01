@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div ng-app="sjpApp">
+<div data-ng-controller="sjpCtrl">
+{{firstName}}<br>
+  {{lastName}}
+
+  <button data-ng-click="all2()">all</button>
+</div>
+</div>
+
+
+<script src="../bower_components/angular/angular.js"></script>
+
+<script>
+
+
+  var sjpApp = angular.module("sjpApp", []);
+  sjpApp.controller('sjpCtrl', function($scope) {
+    $scope.firstName = 'siddy';
+    $scope.lastName = 'simp1';
+
+    $scope.add = function() {
+      $scope.firstName = 'cr';
+    };
+
+
+    $scope.all= function() {
+      $scope.add();
+      $scope.lastName = 'simp';
+    };
+
+
+    function add2() {
+      $scope.firstName = 'gavin';
+      add3();
+      add4();
+      add5();
+      console.log(this);
+    }
+
+    function add3(){
+      alert('hi add3');
+    }
+
+    var add4 = function () {
+      alert('hi add4');
+    }
+
+       add5 = function () {
+      alert('hi add5');
+    }
+
+    this.add6 = function () {
+      alert('hi add6');
+    }
+
+
+    $scope.all2 =function() {
+      add2();
+      $scope.lastName = 'simp';
+    };
+  });
+
+
+
+</script>
+</body>
+</html>

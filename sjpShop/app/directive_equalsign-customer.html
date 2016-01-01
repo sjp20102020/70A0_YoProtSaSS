@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div ng-app="drinkApp">
+
+  <div ng-controller="AppCtrl">
+    <div customer  customer-obj="customer1" ></div>
+  </div>
+
+
+
+</div>
+
+
+<script src="../bower_components/angular/angular.js"></script>
+
+<script>
+
+
+  var app = angular.module("drinkApp", []);
+  app.controller("AppCtrl", function($scope) {
+    $scope.customer1 = {
+      firstName: 'siddy',
+      lastName : 'simpson'
+    };
+  });
+  app.directive("customer", function() {
+    return {
+      scope:{
+        customerObj : '='
+      },
+      template: '<div>{{customerObj.firstName}} {{customerObj.lastName}}</div> '
+    };
+  });
+
+
+
+
+</script>
+</body>
+</html>

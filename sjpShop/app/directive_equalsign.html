@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-app="drinkApp">
+
+  <div ng-controller="AppCtrl">
+    <div drink flavor="cherry" ></div>
+    <div drink flavor={{ctrlFlavor}} ></div>
+  </div>
+
+
+
+</div>
+
+
+<script src="../bower_components/angular/angular.js"></script>
+
+<script>
+
+
+  var app = angular.module("drinkApp", []);
+  app.controller("AppCtrl", function($scope) {
+    $scope.ctrlFlavor = "blackberry";
+
+  });
+
+  app.directive("drink", function() {
+    return {
+     template: '<div>{{flavor}}</div> ' ,
+
+      //method1
+      //This will read attribute flavor via attrs param
+  /*   link : function(scope, element, attrs) {
+       scope.flavor = attrs.flavor;
+      },*/
+
+    //method2
+      //this will read attribute flavor via @ sign
+      //and assign it to the scope.
+      scope:{
+        flavor : '@'
+      }
+
+    };
+  });
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+  app.directive('enter', function() {
+    return function (scope, element, attrs) {
+      element.bind('mouseenter', function() {
+        console.log('in enter');
+
+        //Method1
+        // we have access to the scope
+        scope.loadMoreTweets();
+
+        //Method2
+        //$apply will look for loadMoreTweets method inside the scope
+        scope.$apply('loadMoreTweets()');
+
+        //Method3
+        //reads the attr of the directive
+        scope.$apply(attrs.enter);
+
+      });
+    };
+  });
+
+</script>
+</body>
+</html>

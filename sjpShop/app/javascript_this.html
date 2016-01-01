@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+
+</head>
+<body>
+
+hello
+
+<script>
+
+  /*javascript objects are closer to hashmap
+   each method or varibale in a object is a entry in the hashmap
+   **/
+  var lastName = 'joy';
+  var contact = {
+    firstName: 'siddy',
+    printHello: function () {
+      console.log('hello');
+    },
+
+    BadPrintFirstName: function () {
+      //Errors
+      //Uncaught ReferenceError: firstName is not defined
+      console.log(firstName);
+    },
+
+    goodPrintLastName: function () {
+      //can access global variable. But bad idea.
+      console.log(lastName);
+    },
+
+    BadAccessPrintHello: function () {
+      //ERROR
+      //Uncaught ReferenceError: printHello is not defined
+      printHello();
+    }
+
+
+  };
+
+  console.log(contact.firstName);
+  //  method1 calling. with dot: ERROR
+  /*    contact.BadPrintFirstName();*/
+
+  //method2 calling. without dot: ERROR
+  /*  var callBadPrintFirstName = contact.BadPrintFirstName;
+   callBadPrintFirstName();*/
+
+
+  //  method1 calling. with dot  : SUCCESS
+  contact.goodPrintLastName();
+  //method2 calling. without dot : SUCCESS
+  var callgoodPrintLastName = contact.goodPrintLastName;
+  callgoodPrintLastName();
+
+  //  method1 calling. with dot: ERROR
+  /*    contact.BadAccessPrintHello();*/
+
+  //method2 calling. without dot: ERROR
+    var callBadAccessPrintHello = contact.BadAccessPrintHello;
+   callBadAccessPrintHello();
+
+</script>
+</body>
+</html>

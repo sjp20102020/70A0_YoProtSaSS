@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div ng-app="sjpApp">
+
+  <customer></customer>
+
+</div>
+
+
+<script src="../bower_components/angular/angular.js"></script>
+
+<script>
+
+
+  var sjpApp = angular.module("sjpApp", ['directiveApp']);
+ /* var directiveApp = angular.module('directiveApp',[]);
+  directiveApp.directive('customer', function () {
+    return {
+
+      restrict: 'E',
+      link: function (scope, element, attrs, ctrl) {
+
+      },
+
+      controller: function ($scope) {
+        $scope.name = toUpperCase();
+
+        this.toUpperCase = function() {
+          return 'siddy';
+        }
+
+      },
+      template: '<div> {{name}}</div>'
+
+    }
+  });
+
+*/
+
+
+
+</script>
+</body>
+</html>

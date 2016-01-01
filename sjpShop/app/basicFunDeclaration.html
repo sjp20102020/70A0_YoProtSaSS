@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+
+  //Function Declaration
+  // this works:
+    someFnA();
+  function someFnA () {
+    console.log("in someFnA");
+  }
+
+  //Function Expression
+  //This do not work
+  someFnB();
+  var someFnB = function () {
+    console.log("in someFnB");
+  };
+
+
+
+
+
+
+
+
+  function someFn () {
+    console.log("in someFn");
+  }
+
+  function someOtherFn () {
+    console.log("in someOtherFn");
+  }
+
+  $scope.someFn = someFn
+  //or
+  var self = this;
+  self.someFn = someFn;
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

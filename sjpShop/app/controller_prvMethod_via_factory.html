@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body data-ng-app="sjpAppFull100">
+<div >
+  <div ng-controller="CalculatorController">
+    Enter a number:
+    <input type="number" ng-model="number"/>
+    <button ng-click="doSquare()">X<sup>2</sup></button>
+    <button ng-click="doCube()">X<sup>3</sup></button>
+
+    <div>Answer: {{answer}}</div>
+  </div>
+</div>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="sjpTest/scripts/controller_prvMethod_via_factory.js"></script>
+
+</body>
+</html>

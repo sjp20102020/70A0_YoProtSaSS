@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body data-ng-app="sjpApp">
+<main data-ng-controller="ElectionCtrl">
+
+  <header >
+    <h3>
+      Total user votes : {{totalVotes}}
+    </h3>
+    <h3>
+      Last Vote for : {{lastVote}}
+    </h3>
+  </header>
+
+  <section>
+    <div data-ng-repeat="musician in musicians | orderBy : votes : true" >
+      <label for="mucian_name">{{musician.name}}</label>
+      <label for="mucian_name">Votes : {{musician.votes}}</label>
+      <button data-ng-click="onVote(musician, true)">Up Vote</button>
+      <button data-ng-click="onVote(musician, false)">down Vote</button>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="../bower_components/angular/angular.js"></script>
+<script>
+  var sjpApp = angular.module('sjpApp', ['controllers']);
+
+  var controllers = angular.module('controllers', []);
+  angular.module('controllers').controller('ElectionCtrl',
+    ['$scope',
+      function ($scope) {
+        $scope.musicians = [
+          {name: "Lemmy Kilmister", votes: 0},
+          {name: "Bruce Dickinson", votes: 0},
+          {name: "Danzig", votes: 0},
+          {name: "Ronnie James Dio", votes: 0}
+        ];
+        $scope.totalVotes = 0;
+        $scope.lastVote = null;
+
+        $scope.countVote = function (name) {
+          $scope.totalVotes++;
+          $scope.lastVote = name;
+        };
+
+        $scope.onVote = function (musician, up) {
+          if (up) {
+            musician.votes++;
+          } else {
+            musician.votes--;
+          }
+          $scope.countVote(musician.name);
+        };
+
+
+      }]);
+
+
+  angular.module('controllers').controller('MusicianCtrl',
+    ['$scope',
+      function ($scope) {
+        $scope.onVote = function (musician, up) {
+          if (up) {
+            musician.votes++;
+          } else {
+            musician.votes--;
+          }
+          $scope.countVote(musician.name);
+        };
+      }]);
+
+
+</script>
+
+
+</body>
+</html>

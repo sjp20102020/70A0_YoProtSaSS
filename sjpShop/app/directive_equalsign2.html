@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-app="drinkApp">
+  <!-- we've replaced the use of $scope with the preferred "controller as" syntax. see:http://toddmotto.com/digging-into-angulars-controller-as-syntax/ -->
+  <div ng-controller="AppCtrl as appctrl">
+    <input type="text" ng-model="appctrl.ctrlFlavor">
+    <div drink flavor="{{appctrl.ctrlFlavor}}"></div>
+  </div>
+</div>
+
+
+<script src="../bower_components/angular/angular.js"></script>
+
+<script>
+  var app = angular.module("drinkApp", []);
+
+  app.controller("AppCtrl", function() {
+    var appctrl = this;
+    appctrl.ctrlFlavor = "blackberry";
+  });
+
+  app.directive("drink", function() {
+    return {
+      scope: {
+        flavor: "@"
+      },
+      template: '<div>{{flavor}}</div>'
+    };
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="styles/sjp.css">
+</head>
+<body>
+
+
+<div ng-app="behaviorApp">
+  <div enter="panel" leave="panel">I'm content!</div>
+</div>
+
+<script src="../bower_components/angular/angular.js"></script>
+<script>
+
+  var app = angular.module("behaviorApp", []);
+  app.directive("enter", function () {
+    return {
+      restrict: 'A',
+      scope: true,
+      link: function (scope, element, attrs, ctrl) {
+        element.bind("mouseenter", function () {
+          //Method1 : add a bootstrap class
+          element.addClass('panel');
+          //Method2 : add a bootstrap class
+          element.addClass(attrs.enter);
+        });
+      }
+    }
+  });
+
+  app.directive("leave", function () {
+    return {
+      restrict: 'A',
+      scope: true,
+      link: function (scope, element, attrs, ctrl) {
+        element.bind("mouseleave", function () {
+          //Method1 : remove a bootstrap class
+          element.removeClass('panel');
+          //Method2 : remove a bootstrap class
+          element.removeClass(attrs.leave);
+        });
+      }
+    };
+  });
+
+</script>
+
+
+</body>
+</html>

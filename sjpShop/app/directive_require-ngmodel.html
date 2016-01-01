@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div ng-app="drinkApp">
+
+  <bank ng-model="amount"></bank>
+
+
+</div>
+
+
+<script src="../bower_components/angular/angular.js"></script>
+
+<script>
+
+
+  var app = angular.module("drinkApp", []);
+
+  app.directive("bank", function () {
+    return {
+      require: 'ngModel',
+      link: function (scope, element, attrs, ngModelCtrl) {
+        scope.amount = 5;
+        element.on('click', function () {
+          ngModelCtrl.$setViewValue(ngModelCtrl.$viewValue + 10);
+          scope.$apply();
+        });
+
+      },
+
+      template: '<div>click to topup - {{amount}}</div>'
+
+    };
+  });
+
+
+</script>
+</body>
+</html>
